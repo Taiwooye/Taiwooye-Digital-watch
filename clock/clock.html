@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ body{
+    background-image: url(./images/pumpkin.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+ }
+    /* #clock {
+        font-size: 175px;
+        width: 400px;
+        margin: 150px;
+        text-align: center;
+        border: 2px solid black;
+        border-radius: 20px; 
+         margin-left: 300px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+
+    } */
+
+    p {
+        font-size: 100px;
+        text-align: center;
+        color: rgb(33, 92, 151);
+    }
+
+    #myclock {
+        font-size: 175px;
+        width: 500px;
+        height: 170px;
+        text-align: center;
+        /* border: 2px solid red; */
+        border-radius: 20px;
+        margin: 0 auto;
+        /* background-color: red; */
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 5px 10px rgba(225, 216, 216, 0.3);
+
+
+    }
+    #myclock small {
+        top: 0;
+        position: absolute;
+        /* transform: translateX(100%); */
+        animation: example 20s linear infinite;
+        margin: 0;
+        padding: 0;
+        color: rgb(33, 92, 151);
+        
+    }
+
+    @keyframes example {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+</style>
+
+<script>
+    setInterval(showTime, 1000);
+    function showTime() {
+        let time = new Date();
+        let hour = time.getHours();
+        let min = time.getMinutes();
+        let sec = time.getSeconds();
+        am_pm = "AM";
+
+        if (hour > 12) {
+            // hour -= 12;
+            am_pm = "PM";
+        }
+        if (hour == 0) {
+            // hour = 12;
+            am_pm = "AM";
+        }
+        hour = hour < 10 ? "0" + hour : hour;
+        min = min < 10 ? "0" + min : min;
+        sec = sec < 10 ? "0" + sec : sec;
+
+        let currentTime = hour + ":" + min + ":" + sec + am_pm;
+        document.getElementById("clock_digital").innerHTML = (currentTime)
+    }
+    showTime();
+</script>
+
+<body>
+    <p>Digital Clock</p>
+
+    <div id="myclock">
+        <small id="clock_digital"></small>
+    </div>
+</body>
+
+</html>
